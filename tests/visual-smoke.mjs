@@ -187,6 +187,8 @@ for (const route of [
         h1: document.querySelectorAll('h1').length,
         heroImages: hero?.querySelectorAll('img').length ?? -1,
         heroBackground: hero ? window.getComputedStyle(hero).backgroundImage : '',
+        heroBackgroundColor: hero ? window.getComputedStyle(hero).backgroundColor : '',
+        heroColor: hero ? window.getComputedStyle(hero).color : '',
         preparationImages: routeName === 'contact' ? preparation?.querySelectorAll('img').length ?? -1 : 0,
         preparationColumns:
           routeName === 'contact' && preparation
@@ -217,6 +219,8 @@ for (const route of [
       h1: check.h1,
       heroImages: check.heroImages,
       heroBackground: check.heroBackground,
+      heroBackgroundColor: check.heroBackgroundColor,
+      heroColor: check.heroColor,
       preparationImages: check.preparationImages,
       preparationColumns: check.preparationColumns,
       pageErrors,
@@ -274,8 +278,16 @@ for (const result of results) {
   }
   if (result.viewport.startsWith('contact-') || result.viewport.startsWith('service-')) {
     if (result.heroImages !== 0) throw new Error(`Hero interna ainda possui foto em ${result.viewport}`);
-    if (!result.heroBackground.includes('gradient')) {
-      throw new Error(`Hero interna sem degradê em ${result.viewport}`);
+  }
+  if (result.viewport.startsWith('service-') && !result.heroBackground.includes('gradient')) {
+    throw new Error(`Hero de serviço sem degradê em ${result.viewport}`);
+  }
+  if (result.viewport.startsWith('contact-')) {
+    if (result.heroBackgroundColor !== 'rgb(255, 255, 255)') {
+      throw new Error(`Hero de Contato não está branca em ${result.viewport}`);
+    }
+    if (result.heroColor !== 'rgb(7, 24, 39)') {
+      throw new Error(`Texto da hero de Contato sem contraste navy em ${result.viewport}`);
     }
   }
   if (result.viewport.startsWith('contact-')) {

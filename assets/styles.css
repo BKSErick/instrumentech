@@ -1368,6 +1368,34 @@ h4 {
   color: var(--color-yellow-500);
 }
 
+.internal-hero--light {
+  --link-hover: var(--color-navy-700);
+  background: #fff;
+  color: var(--color-navy-950);
+}
+
+.internal-hero--light::after {
+  background-image: linear-gradient(rgb(7 24 39 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(7 24 39 / 4%) 1px, transparent 1px);
+}
+
+.internal-hero--light .lead {
+  color: var(--color-gray-600);
+}
+
+.internal-hero--light .technical-label {
+  color: var(--color-navy-700);
+}
+
+.internal-hero--light .breadcrumb {
+  color: var(--color-navy-900);
+}
+
+.internal-hero--light .breadcrumb a:hover {
+  color: var(--color-navy-700);
+  text-decoration: underline;
+}
+
 .service-overview {
   display: grid;
   grid-template-columns: 0.75fr 1.25fr;

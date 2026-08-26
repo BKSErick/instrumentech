@@ -220,7 +220,7 @@ test('finaliza heros internas sem foto e com contraste sobre degradê', () => {
 
   for (const route of routes.filter((route) => route !== 'index.html')) {
     const html = read(route);
-    const hero = html.match(/<section class="internal-hero">[\s\S]*?<\/section>/)?.[0] || '';
+    const hero = html.match(/<section class="[^"]*\binternal-hero\b[^"]*">[\s\S]*?<\/section>/)?.[0] || '';
     assert.ok(hero, `${route} deve conter a hero interna`);
     assert.doesNotMatch(hero, /<img\b/i, `${route} não deve usar foto na hero`);
   }
@@ -231,6 +231,21 @@ test('finaliza heros internas sem foto e com contraste sobre degradê', () => {
   assert.match(css, /\.in-loco-banner \.technical-label[^}]*color:\s*var\(--color-yellow-500\)/s);
   assert.match(css, /\.breadcrumb\s*\{[^}]*color:\s*#fff/s);
   assert.match(css, /\.internal-hero \.lead\s*\{[^}]*color:\s*#e[0-9a-f]{5}/is);
+});
+
+test('usa hero branca apenas em Contato para contrastar com a seção navy seguinte', () => {
+  const contact = read('contato.html');
+  const css = read('assets/styles.css');
+
+  assert.match(contact, /<section class="internal-hero internal-hero--light">/);
+  for (const route of routes.filter((route) => route !== 'index.html' && route !== 'contato.html')) {
+    assert.doesNotMatch(read(route), /internal-hero--light/, `${route} deve preservar a hero navy`);
+  }
+
+  assert.match(css, /\.internal-hero--light\s*\{[^}]*background:\s*#fff[^}]*color:\s*var\(--color-navy-950\)/s);
+  assert.match(css, /\.internal-hero--light \.lead\s*\{[^}]*color:\s*var\(--color-gray-600\)/s);
+  assert.match(css, /\.internal-hero--light \.technical-label\s*\{[^}]*color:\s*var\(--color-navy-700\)/s);
+  assert.match(css, /\.internal-hero--light \.breadcrumb\s*\{[^}]*color:\s*var\(--color-navy-900\)/s);
 });
 
 test('transforma chamadas de soluções e laboratórios em botões navegáveis', () => {

@@ -235,8 +235,9 @@ ${header('./', 'inicio')}
 ${footer('./')}`;
 }
 
-function internalHero({ prefix, title, label, description, parent = 'Início' }) {
-  return `<section class="internal-hero"><div class="internal-hero-content"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="${href(prefix, 'index.html')}">${parent}</a> / ${escapeHtml(title)}</nav>${sectionLabel(label)}<h1>${escapeHtml(title)}</h1><p class="lead">${escapeHtml(description)}</p></div></section>`;
+function internalHero({ prefix, title, label, description, parent = 'Início', variant = 'dark' }) {
+  const className = variant === 'light' ? 'internal-hero internal-hero--light' : 'internal-hero';
+  return `<section class="${className}"><div class="internal-hero-content"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="${href(prefix, 'index.html')}">${parent}</a> / ${escapeHtml(title)}</nav>${sectionLabel(label)}<h1>${escapeHtml(title)}</h1><p class="lead">${escapeHtml(description)}</p></div></section>`;
 }
 
 function companyPage() {
@@ -269,7 +270,7 @@ function contactPage() {
   return `${head({ title: 'Contato e cotação | Instrumentech', description: 'Envie os dados da sua demanda de instrumentação, calibração, manutenção ou inspeção para a equipe Instrumentech.', route: 'contato.html', prefix, image: 'hero-empresa-DKx_apEK.jpg' })}
 ${header(prefix, 'contato')}
 <main id="conteudo">
-  ${internalHero({ prefix, title: 'Como podemos ajudar sua operação?', label: 'Contato e cotação', description: 'Quanto mais completo o contexto técnico, mais objetiva pode ser a análise inicial.', image: 'hero-empresa-DKx_apEK.jpg' })}
+  ${internalHero({ prefix, title: 'Como podemos ajudar sua operação?', label: 'Contato e cotação', description: 'Quanto mais completo o contexto técnico, mais objetiva pode ser a análise inicial.', variant: 'light' })}
   <section class="section section--navy"><div class="container contact-grid"><div>${sectionLabel('Canais oficiais', '01')}<h2>Comece pelos dados essenciais.</h2><p class="lead">Informe equipamento, quantidade, fabricante, modelo, faixa, aplicação e local de atendimento quando disponíveis.</p><ul class="contact-list"><li><small>WhatsApp</small><a href="${quoteUrl}" target="_blank" rel="noopener">${contact.whatsappDisplay}</a></li><li><small>E-mail</small><a href="mailto:${contact.email}">${contact.email}</a></li><li><small>Localização</small><a href="${contact.map}" target="_blank" rel="noopener">${contact.address}</a></li><li><small>Instagram</small><a href="${contact.instagram}" target="_blank" rel="noopener">@instrumentech</a></li></ul></div>${quoteForm()}</div></section>
   <section class="section section--white request-prep"><div class="container request-prep-grid"><div>${sectionLabel('Preparação da demanda', '02')}<h2>Uma boa cotação começa com informação técnica.</h2></div><ul class="precision-list"><li>Liste os equipamentos e seus identificadores.</li><li>Inclua fotos de placa, conexões e condição do instrumento.</li><li>Informe se o atendimento precisa ocorrer em campo.</li><li>Registre prazo, janela operacional e documentação necessária.</li></ul></div></section>
 </main>${footer(prefix)}`;
