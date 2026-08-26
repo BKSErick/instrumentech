@@ -1,4 +1,4 @@
-/* global document, setTimeout, window */
+/* global DOMMatrix, document, setTimeout, window */
 
 import { mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -110,13 +110,19 @@ for (const viewport of [
     });
     await calibrationTitle.evaluate((element) => {
       const bounds = element.getBoundingClientRect();
-      window.scrollBy(0, bounds.bottom - window.innerHeight * 0.11);
+      window.scrollTo({
+        top: window.scrollY + bounds.bottom - window.innerHeight * 0.11,
+        behavior: 'instant',
+      });
     });
     await page.waitForTimeout(700);
     const motionExitedUp = await calibrationTitle.evaluate((element) => {
       const bounds = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const transformY = style.transform === 'none' ? 0 : new DOMMatrix(style.transform).m42;
       return {
         leftViewport: bounds.bottom > 0,
+        leavingUp: Number.parseFloat(style.opacity) < 1 && transformY < 0,
         state:
           !element.classList.contains('is-visible') && element.classList.contains('is-past'),
       };
@@ -325,6 +331,7 @@ for (const result of results) {
       !result.interaction.motionEntered ||
       !result.interaction.motionExitedUp.state ||
       !result.interaction.motionExitedUp.leftViewport ||
+      !result.interaction.motionExitedUp.leavingUp ||
       !result.interaction.motionExited
     ) {
       throw new Error('Motion de entrada e saída não respondeu ao scroll');

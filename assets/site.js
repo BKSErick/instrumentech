@@ -193,10 +193,11 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const exitBoundary = entry.rootBounds?.top ?? 0;
           entry.target.classList.toggle('is-visible', entry.isIntersecting);
           entry.target.classList.toggle(
             'is-past',
-            !entry.isIntersecting && entry.boundingClientRect.top < 0,
+            !entry.isIntersecting && entry.boundingClientRect.top < exitBoundary,
           );
         });
       },

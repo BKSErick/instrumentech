@@ -349,9 +349,10 @@ test('aplica motion reversível também às listas textuais reorganizadas', () =
   assert.match(script, /'\.section label'/);
   assert.match(script, /'\.section figcaption'/);
   assert.match(script, /classList\.toggle\(['"]is-visible['"],\s*entry\.isIntersecting\)/);
+  assert.match(script, /const exitBoundary\s*=\s*entry\.rootBounds\?\.top\s*\?\?\s*0/);
   assert.match(
     script,
-    /classList\.toggle\(\s*['"]is-past['"],\s*!entry\.isIntersecting\s*&&\s*entry\.boundingClientRect\.top\s*<\s*0,?\s*\)/,
+    /classList\.toggle\(\s*['"]is-past['"],\s*!entry\.isIntersecting\s*&&\s*entry\.boundingClientRect\.top\s*<\s*exitBoundary,?\s*\)/,
   );
   assert.match(script, /const heroRevealElements\s*=/);
   assert.match(script, /const contentRevealElements\s*=/);
