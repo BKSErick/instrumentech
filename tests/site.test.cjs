@@ -28,6 +28,13 @@ test('gera toda a arquitetura multipágina acordada', () => {
   assert.equal(existsSync(join(root, 'robots.txt')), true);
 });
 
+test('configura a Vercel para publicar os arquivos estáticos gerados na raiz', () => {
+  const vercel = JSON.parse(read('vercel.json'));
+
+  assert.equal(vercel.buildCommand, 'npm run build');
+  assert.equal(vercel.outputDirectory, '.');
+});
+
 test('home cobre a jornada institucional e comercial completa', () => {
   const html = read('index.html');
   for (const id of [
