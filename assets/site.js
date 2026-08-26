@@ -178,22 +178,33 @@ document.querySelectorAll(motionSelector).forEach((element) => {
   element.style.setProperty('--reveal-delay', `${Math.min(order, 4) * 70}ms`);
 });
 
-const revealElements = document.querySelectorAll('.reveal');
+const revealElements = [...document.querySelectorAll('.reveal')];
+const heroRevealElements = revealElements.filter((element) =>
+  element.closest('.hero, .internal-hero'),
+);
+const contentRevealElements = revealElements.filter(
+  (element) => !element.closest('.hero, .internal-hero'),
+);
 
 if (reducedMotion.matches || !('IntersectionObserver' in window)) {
   revealElements.forEach((element) => element.classList.add('is-visible'));
 } else {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        entry.target.classList.toggle('is-visible', entry.isIntersecting);
-        entry.target.classList.toggle(
-          'is-past',
-          !entry.isIntersecting && entry.boundingClientRect.top < 0,
-        );
-      });
-    },
-    { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
-  );
-  revealElements.forEach((element) => observer.observe(element));
+  const observeRevealElements = (elements, rootMargin) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('is-visible', entry.isIntersecting);
+          entry.target.classList.toggle(
+            'is-past',
+            !entry.isIntersecting && entry.boundingClientRect.top < 0,
+          );
+        });
+      },
+      { rootMargin, threshold: 0.01 },
+    );
+    elements.forEach((element) => observer.observe(element));
+  };
+
+  observeRevealElements(heroRevealElements, '0px 0px -10% 0px');
+  observeRevealElements(contentRevealElements, '-14% 0px -12% 0px');
 }

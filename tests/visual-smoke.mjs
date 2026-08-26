@@ -108,12 +108,19 @@ for (const viewport of [
     await calibration.screenshot({
       path: fileURLToPath(new URL('section-calibration.png', artifacts)),
     });
-    await page.evaluate(() => window.scrollBy(0, window.innerHeight));
+    await calibrationTitle.evaluate((element) => {
+      const bounds = element.getBoundingClientRect();
+      window.scrollBy(0, bounds.bottom - window.innerHeight * 0.11);
+    });
     await page.waitForTimeout(700);
-    const motionExitedUp = await calibrationTitle.evaluate(
-      (element) =>
-        !element.classList.contains('is-visible') && element.classList.contains('is-past'),
-    );
+    const motionExitedUp = await calibrationTitle.evaluate((element) => {
+      const bounds = element.getBoundingClientRect();
+      return {
+        leftViewport: bounds.bottom > 0,
+        state:
+          !element.classList.contains('is-visible') && element.classList.contains('is-past'),
+      };
+    });
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(700);
     const motionExited = !(await calibrationTitle.evaluate((element) =>
@@ -316,7 +323,8 @@ for (const result of results) {
     if (result.interaction.iconCount !== 3) throw new Error('Ícones técnicos ausentes');
     if (
       !result.interaction.motionEntered ||
-      !result.interaction.motionExitedUp ||
+      !result.interaction.motionExitedUp.state ||
+      !result.interaction.motionExitedUp.leftViewport ||
       !result.interaction.motionExited
     ) {
       throw new Error('Motion de entrada e saída não respondeu ao scroll');

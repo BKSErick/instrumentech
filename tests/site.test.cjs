@@ -353,9 +353,22 @@ test('aplica motion reversível também às listas textuais reorganizadas', () =
     script,
     /classList\.toggle\(\s*['"]is-past['"],\s*!entry\.isIntersecting\s*&&\s*entry\.boundingClientRect\.top\s*<\s*0,?\s*\)/,
   );
-  assert.match(css, /\.js \.reveal\.is-past\s*\{[^}]*opacity:\s*0[^}]*translateY\(-18px\)/s);
+  assert.match(script, /const heroRevealElements\s*=/);
+  assert.match(script, /const contentRevealElements\s*=/);
+  assert.match(
+    script,
+    /observeRevealElements\(contentRevealElements,\s*['"]-14% 0px -12% 0px['"]\)/,
+  );
   assert.match(
     css,
-    /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.js \.reveal\.is-past[\s\S]*transform:\s*none/,
+    /\.js \.reveal--text\s*\{[^}]*translateY\(40px\)[^}]*filter:\s*blur\(5px\)/s,
+  );
+  assert.match(
+    css,
+    /\.js \.reveal--text\.is-past\s*\{[^}]*translateY\(-30px\)[^}]*filter:\s*blur\(4px\)/s,
+  );
+  assert.match(
+    css,
+    /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.js \.reveal--text\.is-past[\s\S]*transform:\s*none[\s\S]*filter:\s*none/,
   );
 });

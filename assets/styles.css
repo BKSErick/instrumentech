@@ -1524,7 +1524,12 @@ h4 {
 }
 
 .js .reveal--text {
-  transform: translateY(24px);
+  transform: translateY(40px);
+  filter: blur(5px);
+  transition: opacity 560ms ease var(--reveal-delay, 0ms),
+    transform 720ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    filter 560ms ease var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
 }
 
 .js .reveal.is-past {
@@ -1532,9 +1537,15 @@ h4 {
   transform: translateY(-18px);
 }
 
+.js .reveal--text.is-past {
+  transform: translateY(-30px);
+  filter: blur(4px);
+}
+
 .js .reveal.is-visible {
   opacity: 1;
   transform: none;
+  filter: none;
   will-change: auto;
 }
 
@@ -1857,8 +1868,11 @@ h4 {
   }
 
   .js .reveal,
-  .js .reveal.is-past {
+  .js .reveal.is-past,
+  .js .reveal--text,
+  .js .reveal--text.is-past {
     opacity: 1;
     transform: none;
+    filter: none;
   }
 }
