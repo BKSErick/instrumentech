@@ -334,8 +334,21 @@ test('reorganiza formulário, setores e preparação da demanda sem fotos', () =
 
 test('aplica motion reversível também às listas textuais reorganizadas', () => {
   const script = read('assets/site.js');
+  const css = read('assets/styles.css');
 
   assert.match(script, /'\.section \.precision-list > li'/);
   assert.match(script, /'\.section \.sector-list > li'/);
+  assert.match(script, /'\.internal-hero \.breadcrumb'/);
+  assert.match(script, /'\.section label'/);
+  assert.match(script, /'\.section figcaption'/);
   assert.match(script, /classList\.toggle\(['"]is-visible['"],\s*entry\.isIntersecting\)/);
+  assert.match(
+    script,
+    /classList\.toggle\(\s*['"]is-past['"],\s*!entry\.isIntersecting\s*&&\s*entry\.boundingClientRect\.top\s*<\s*0,?\s*\)/,
+  );
+  assert.match(css, /\.js \.reveal\.is-past\s*\{[^}]*opacity:\s*0[^}]*translateY\(-18px\)/s);
+  assert.match(
+    css,
+    /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.js \.reveal\.is-past[\s\S]*transform:\s*none/,
+  );
 });

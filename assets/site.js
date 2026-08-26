@@ -129,12 +129,21 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
 const motionSelector = [
   '.hero-copy > *',
+  '.internal-hero .breadcrumb',
   '.internal-hero-content > *',
   '.section .technical-label',
+  '.section .section-index',
   '.section h2',
   '.section h3',
   '.section .lead',
   '.section p:not(.technical-label):not(.form-status)',
+  '.section blockquote',
+  '.section label',
+  '.section legend',
+  '.section figcaption',
+  '.section dt',
+  '.section dd',
+  '.section summary',
   '.section .precision-list > li',
   '.section .sector-list > li',
   '.section .faq-item',
@@ -148,6 +157,7 @@ const motionSelector = [
   '.cta-final .lead',
   '.site-footer .footer-grid > *',
   '.site-footer .footer-bottom > *',
+  '.site-footer p',
 ].join(',');
 
 const parentOrders = new Map();
@@ -158,7 +168,11 @@ document.querySelectorAll(motionSelector).forEach((element) => {
   const order = parentOrders.get(parent) || 0;
   parentOrders.set(parent, order + 1);
   element.classList.add('reveal');
-  if (element.matches('h1, h2, h3, p, .technical-label, .lead')) {
+  if (
+    element.matches(
+      'h1, h2, h3, p, li, label, legend, figcaption, dt, dd, summary, blockquote, .breadcrumb, .technical-label, .lead, .section-index',
+    )
+  ) {
     element.classList.add('reveal--text');
   }
   element.style.setProperty('--reveal-delay', `${Math.min(order, 4) * 70}ms`);
@@ -173,6 +187,10 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
     (entries) => {
       entries.forEach((entry) => {
         entry.target.classList.toggle('is-visible', entry.isIntersecting);
+        entry.target.classList.toggle(
+          'is-past',
+          !entry.isIntersecting && entry.boundingClientRect.top < 0,
+        );
       });
     },
     { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },

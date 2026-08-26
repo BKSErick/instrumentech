@@ -108,6 +108,12 @@ for (const viewport of [
     await calibration.screenshot({
       path: fileURLToPath(new URL('section-calibration.png', artifacts)),
     });
+    await page.evaluate(() => window.scrollBy(0, window.innerHeight));
+    await page.waitForTimeout(700);
+    const motionExitedUp = await calibrationTitle.evaluate(
+      (element) =>
+        !element.classList.contains('is-visible') && element.classList.contains('is-past'),
+    );
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(700);
     const motionExited = !(await calibrationTitle.evaluate((element) =>
@@ -137,6 +143,7 @@ for (const viewport of [
     interaction = {
       iconCount: await page.locator('[data-calibration-icon]').count(),
       motionEntered,
+      motionExitedUp,
       motionExited,
       smoothScrollMoved,
       footerLogoRatio,
@@ -307,7 +314,11 @@ for (const result of results) {
       throw new Error('Cartão de calibração excede 280px');
     }
     if (result.interaction.iconCount !== 3) throw new Error('Ícones técnicos ausentes');
-    if (!result.interaction.motionEntered || !result.interaction.motionExited) {
+    if (
+      !result.interaction.motionEntered ||
+      !result.interaction.motionExitedUp ||
+      !result.interaction.motionExited
+    ) {
       throw new Error('Motion de entrada e saída não respondeu ao scroll');
     }
     if (!result.interaction.smoothScrollMoved) throw new Error('Scroll suave não avançou');
