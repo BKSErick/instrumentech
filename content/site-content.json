@@ -1,0 +1,162 @@
+{
+  "company": {
+    "name": "Instrumentech",
+    "legalLabel": "Automation | Process Instruments",
+    "since": "2008",
+    "headline": "Precisão que mantém sua operação em movimento.",
+    "headlineLines": ["Precisão que mantém", "sua operação", "em movimento."],
+    "description": "Soluções em instrumentação, calibração, metrologia, manutenção e inspeção industrial para operações que exigem segurança, confiabilidade e controle."
+  },
+  "contact": {
+    "whatsapp": "5511991192482",
+    "whatsappDisplay": "+55 (11) 99119-2482",
+    "email": "calibracao@instrumentech.com.br",
+    "address": "R. Brasópolis, 24a — Jardim Jaú (Zona Leste), São Paulo — SP",
+    "instagram": "https://www.instagram.com/instrumentech",
+    "map": "https://www.google.com/maps/search/?api=1&query=R.%20Bras%C3%B3polis%2C%2024a%2C%20S%C3%A3o%20Paulo%20SP"
+  },
+  "sectors": [
+    "Farmacêutico",
+    "Químico",
+    "Bioquímico",
+    "Alimentício",
+    "Mineração",
+    "Automobilístico",
+    "Agroindústria",
+    "Metalurgia",
+    "Análises clínicas",
+    "Energia",
+    "Óleo e gás",
+    "Papel e celulose"
+  ],
+  "services": [
+    {
+      "slug": "calibracao-pressao",
+      "title": "Calibração de pressão",
+      "index": "01",
+      "label": "Metrologia de pressão",
+      "summary": "Calibração de instrumentos de pressão com padrões rastreáveis à RBC.",
+      "description": "Atendimento a instrumentos utilizados para medir, indicar, transmitir ou controlar pressão, com análise técnica da faixa, aplicação e condição do equipamento.",
+      "heroImage": "hero-lab-pressao-CC39m4Jl.jpg",
+      "equipment": ["Manômetros", "Vacuômetros", "Transmissores", "Pressostatos", "Válvulas de alívio e segurança"],
+      "applications": ["Processos industriais", "Utilidades", "Linhas pressurizadas", "Bancadas e laboratórios"],
+      "faq": [
+        ["Quais dados ajudam na cotação?", "Quantidade, fabricante, modelo, faixa de medição, aplicação e local de atendimento ajudam a definir o escopo."],
+        ["O atendimento pode ocorrer em campo?", "A viabilidade do serviço in loco depende do instrumento, da faixa, da estrutura necessária e das condições da instalação."],
+        ["Como a rastreabilidade é tratada?", "A empresa declara utilizar padrões calibrados por órgãos ou laboratórios credenciados à RBC. O documento aplicável deve ser conferido na proposta." ]
+      ]
+    },
+    {
+      "slug": "calibracao-temperatura",
+      "title": "Calibração de temperatura",
+      "index": "02",
+      "label": "Metrologia térmica",
+      "summary": "Serviços para instrumentos de temperatura em aplicações industriais e laboratoriais.",
+      "description": "Avaliação e calibração de instrumentos de indicação, transmissão e controle de temperatura, conforme o escopo técnico alinhado para cada aplicação.",
+      "heroImage": "hero-lab-temperatura-DfEbNMn9.jpg",
+      "equipment": ["Termômetros bimetálicos", "Termômetros digitais", "Sensores", "Transmissores", "Indicadores e controladores"],
+      "applications": ["Processos térmicos", "Armazenamento", "Laboratórios", "Controle de qualidade"],
+      "faq": [
+        ["Quais informações devem acompanhar o instrumento?", "Informe modelo, faixa, resolução, pontos desejados e condição de uso."],
+        ["É possível atender diferentes tipos de sensores?", "A equipe confirma a compatibilidade técnica após analisar o tipo de sensor, conexão e faixa."],
+        ["Há atendimento in loco?", "Quando tecnicamente aplicável, o serviço pode ser avaliado para execução nas instalações do cliente."]
+      ]
+    },
+    {
+      "slug": "calibracao-vazao",
+      "title": "Calibração de vazão",
+      "index": "03",
+      "label": "Medição em processo",
+      "summary": "Avaliação e calibração de medidores de vazão, inclusive em campo.",
+      "description": "Serviços voltados à confiabilidade da medição de vazão em processos industriais, considerando tecnologia do medidor, fluido, instalação e faixa operacional.",
+      "heroImage": "hero-lab-vazao-D7Hlib1l.jpg",
+      "equipment": ["Medidores de vazão", "Transmissores associados", "Instrumentos de indicação", "Sistemas de medição em campo"],
+      "applications": ["Linhas de processo", "Utilidades industriais", "Água e fluidos compatíveis", "Verificação em campo"],
+      "faq": [
+        ["O medidor precisa ser desmontado?", "A abordagem depende da tecnologia, da instalação e do método tecnicamente aplicável ao caso."],
+        ["Quais dados são necessários?", "Tecnologia do medidor, diâmetro, fluido, faixa, conexão e local de instalação são informações importantes."],
+        ["Como solicitar uma avaliação?", "Envie fotos da placa, dados do processo e a necessidade de medição para análise inicial."]
+      ]
+    },
+    {
+      "slug": "laboratorio-analitico",
+      "title": "Laboratório analítico",
+      "index": "04",
+      "label": "Precisão em bancada",
+      "summary": "Calibração e suporte para instrumentos analíticos e equipamentos utilizados em laboratório.",
+      "description": "Atendimento técnico para instrumentos que sustentam medições, preparo de amostras e rotinas de controle em ambientes laboratoriais.",
+      "heroImage": "hero-lab-analitica-CFwvI7Ag.jpg",
+      "equipment": ["pH-metros", "Condutivímetros", "Pipetas", "Balanças", "Vidrarias", "Analisadores"],
+      "applications": ["Controle de qualidade", "Análises físico-químicas", "Pesquisa", "Rotinas laboratoriais"],
+      "faq": [
+        ["Quais equipamentos podem ser avaliados?", "A lista inclui pH-metros, condutivímetros, pipetas, balanças, vidrarias e outros instrumentos sob análise técnica."],
+        ["Equipamentos importados podem ser atendidos?", "A assistência é avaliada conforme marca, modelo, documentação e disponibilidade técnica."],
+        ["Como enviar a relação de equipamentos?", "Prepare uma lista com marca, modelo, patrimônio, quantidade e serviço desejado e encaminhe pelo canal comercial."]
+      ]
+    },
+    {
+      "slug": "laboratorio-biomedico",
+      "title": "Laboratório biomédico",
+      "index": "05",
+      "label": "Assistência especializada",
+      "summary": "Manutenção preventiva, corretiva e suporte técnico para equipamentos biomédicos e laboratoriais.",
+      "description": "Diagnóstico, testes e manutenção de equipamentos utilizados em análises clínicas e rotinas laboratoriais.",
+      "heroImage": "cta-lab-analitica-BFGj64e2.jpg",
+      "equipment": ["Equipamentos de análises clínicas", "Instrumentos de bancada", "Equipamentos nacionais", "Equipamentos importados"],
+      "applications": ["Análises clínicas", "Laboratórios farmacêuticos", "Laboratórios bioquímicos", "Rotinas de diagnóstico"],
+      "faq": [
+        ["A assistência cobre qualquer marca?", "Cada solicitação é avaliada conforme documentação, disponibilidade de peças e capacidade técnica."],
+        ["Qual a diferença entre preventiva e corretiva?", "A preventiva busca reduzir falhas e verificar condições; a corretiva atua após a identificação de um problema."],
+        ["É necessário enviar o equipamento?", "O formato de atendimento é definido após a análise do equipamento, local e serviço necessário."]
+      ]
+    },
+    {
+      "slug": "inspecao-nr13",
+      "title": "Inspeção NR-13",
+      "index": "06",
+      "label": "Segurança de equipamentos",
+      "summary": "Inspeções, testes e serviços relacionados a vasos de pressão, caldeiras e sua documentação técnica.",
+      "description": "Atuação técnica em demandas associadas à NR-13, com escopo definido conforme equipamento, histórico, condição e responsabilidade profissional.",
+      "heroImage": "hero-lab-vazao-D7Hlib1l.jpg",
+      "equipment": ["Vasos de pressão", "Caldeiras", "Linhas associadas", "Componentes e documentação relacionada"],
+      "applications": ["Inspeção técnica", "Testes", "Manutenção e recuperação", "Documentação técnica"],
+      "faq": [
+        ["Quais dados iniciam a análise?", "Identificação do equipamento, categoria, prontuário disponível, histórico e local de instalação."],
+        ["A documentação está incluída?", "A documentação aplicável deve ser definida no escopo técnico e comercial da demanda."],
+        ["O serviço inclui manutenção?", "Inspeção, testes, manutenção ou recuperação podem compor escopos distintos conforme a necessidade."]
+      ]
+    },
+    {
+      "slug": "assistencia-tecnica",
+      "title": "Assistência técnica",
+      "index": "07",
+      "label": "Disponibilidade operacional",
+      "summary": "Manutenção preventiva, corretiva, diagnóstico, ajustes e suporte técnico especializado.",
+      "description": "Atendimento a equipamentos nacionais e importados, com análise do sintoma, aplicação, condição e recursos necessários.",
+      "heroImage": "cta-empresa-QyEqkeBf.jpg",
+      "equipment": ["Instrumentos industriais", "Equipamentos analíticos", "Equipamentos laboratoriais", "Sistemas de medição e controle"],
+      "applications": ["Diagnóstico", "Manutenção preventiva", "Manutenção corretiva", "Ajustes e testes"],
+      "faq": [
+        ["Como solicitar diagnóstico?", "Envie marca, modelo, número de série, descrição do sintoma e fotos do equipamento."],
+        ["Há suporte a equipamentos importados?", "A viabilidade depende de documentação, recursos, peças e condição do equipamento."],
+        ["O atendimento inclui treinamento?", "Necessidades de orientação ou treinamento devem ser alinhadas como parte específica do escopo."]
+      ]
+    },
+    {
+      "slug": "atendimento-in-loco",
+      "title": "Atendimento in loco",
+      "index": "08",
+      "label": "Precisão em campo",
+      "summary": "Serviços técnicos executados nas instalações do cliente.",
+      "description": "A execução em campo reduz movimentações e interferências no processo. Infraestrutura, segurança e método são definidos no planejamento da visita.",
+      "heroImage": "cta-lab-vazao-BnjZ7nk9.jpg",
+      "equipment": ["Instrumentos instalados", "Medidores de processo", "Conjuntos com restrição de movimentação", "Demandas de campo"],
+      "applications": ["Plantas industriais", "Utilidades", "Laboratórios", "Operações com janela de parada"],
+      "faq": [
+        ["Todo serviço pode ser feito no local?", "Não. A viabilidade depende do instrumento, padrão necessário, condições ambientais e segurança."],
+        ["O que informar para planejar a visita?", "Local, quantidade, instrumentos, faixas, acessos, riscos, disponibilidade e janela operacional."],
+        ["Como é definido o escopo?", "A equipe analisa os dados e confirma método, recursos, prazo e condições comerciais antes da execução."]
+      ]
+    }
+  ]
+}
